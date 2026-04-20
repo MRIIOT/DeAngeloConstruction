@@ -1,0 +1,17 @@
+# Local Claude Code tooling
+.claude/
+
+# WordPress backup — kept locally for reference, not versioned
+# (contains large media + database dump with customer form submissions)
+wordpress_backup/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc

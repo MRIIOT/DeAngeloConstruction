@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DeAngelo Construction — Aesthetic Comparison</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&family=Big+Shoulders+Display:wght@400;600;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   BASE
+   ========================================================= */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #0a0a0a; }
+body { font-family: system-ui, sans-serif; }
+a { color: inherit; }
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 1240px) {
+  .compare { grid-template-columns: 1fr; }
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.panel + .panel { border-left: 1px solid #0a0a0a; }
+
+.panel::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 18px; left: 18px;
+  z-index: 30;
+  padding: 7px 13px 6px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: #0a0a0a;
+  color: #fafafa;
+}
+
+/* =========================================================
+   PANEL A — BLUEPRINT & CRAFT
+   paper-cream, editorial monograph, hairline rules,
+   Fraunces + JetBrains Mono, copper accent, B&W photography
+   ========================================================= */
+.panel-blueprint {
+  --bg:       #ece4d0;
+  --bg-soft:  #e4dcc6;
+  --ink:      #15130f;
+  --ink-soft: #5b534a;
+  --copper:   #a9572d;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Fraunces", serif;
+  padding: 92px clamp(28px, 4vw, 76px) 56px;
+}
+
+/* paper grain */
+.panel-blueprint::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.03  0 0 0 0.07 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  z-index: 1;
+}
+.panel-blueprint > * { position: relative; z-index: 2; }
+
+/* Nav */
+.bp-nav {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--ink);
+}
+.bp-wordmark {
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 144;
+}
+.bp-wordmark em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--copper);
+}
+.bp-wordmark small {
+  display: block;
+  margin-top: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.bp-nav-list {
+  list-style: none;
+  margin: 0; padding: 6px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  justify-self: end;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.bp-nav-list li { display: flex; align-items: baseline; gap: 6px; }
+.bp-nav-list .num { color: var(--copper); font-weight: 600; }
+.bp-nav-list a { text-decoration: none; }
+
+/* Figure meta row */
+.bp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-top: 26px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.bp-meta span { position: relative; padding-left: 14px; }
+.bp-meta span::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: 7px; height: 1px;
+  background: var(--copper);
+}
+
+/* Hero */
+.bp-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  margin-top: 46px;
+  align-items: end;
+}
+.bp-headline {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(52px, 6.4vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144;
+  text-wrap: balance;
+}
+.bp-headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--copper);
+}
+.bp-lede {
+  margin: 30px 0 0;
+  font-size: 17.5px;
+  line-height: 1.55;
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 16;
+}
+.bp-lede::first-letter {
+  font-size: 1.6em;
+  line-height: 0.9;
+  float: left;
+  padding: 6px 8px 0 0;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.bp-photo {
+  aspect-ratio: 4/5;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background: #2a2824;
+}
+.bp-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: grayscale(1) contrast(0.97) brightness(0.94);
+}
+.bp-photo figcaption {
+  position: absolute;
+  left: 12px; bottom: 12px;
+  padding: 6px 10px 5px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--bg);
+  background: rgba(21,19,15,0.82);
+}
+.bp-photo::before {
+  /* registration marks in corners */
+  content: "";
+  position: absolute; inset: 10px;
+  pointer-events: none;
+  background:
+    linear-gradient(#ece4d0,#ece4d0) top left    /12px 1px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) top left    /1px 12px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) top right   /12px 1px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) top right   /1px 12px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) bottom left /12px 1px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) bottom left /1px 12px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) bottom right/12px 1px no-repeat,
+    linear-gradient(#ece4d0,#ece4d0) bottom right/1px 12px no-repeat;
+  opacity: 0.85;
+  z-index: 2;
+}
+
+/* Drawing schedule (services) */
+.bp-schedule {
+  margin-top: 76px;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink);
+}
+.bp-schedule-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.bp-schedule ol {
+  list-style: none; margin: 0; padding: 0;
+  columns: 2;
+  column-gap: 64px;
+  column-rule: 1px solid rgba(21,19,15,0.18);
+}
+.bp-schedule li {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: baseline;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px dashed rgba(21,19,15,0.25);
+  break-inside: avoid;
+}
+.bp-schedule li .num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--copper);
+}
+.bp-schedule li .service {
+  font-size: 20px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 36;
+  letter-spacing: -0.01em;
+}
+.bp-schedule li .tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Contact */
+.bp-contact {
+  margin: 72px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--ink);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px 28px;
+}
+.bp-contact > div { display: flex; flex-direction: column; }
+.bp-contact dt {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.bp-contact dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+  font-variation-settings: "opsz" 24;
+}
+.bp-contact a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--copper);
+  padding-bottom: 1px;
+}
+.bp-areas {
+  grid-column: 1 / -1;
+  margin: 18px 0 0;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(21,19,15,0.25);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 14;
+}
+.bp-areas strong {
+  font-style: normal;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-right: 10px;
+}
+
+/* =========================================================
+   PANEL B — MIDWEST WORKSHOP
+   warm linen, barn-red + mustard, Big Shoulders Display +
+   EB Garamond + Caveat, chunky condensed heads, warm photo
+   ========================================================= */
+.panel-workshop {
+  --bg:       #f2e6c6;
+  --bg-soft:  #e9dbb3;
+  --ink:      #1a120a;
+  --ink-soft: #4e3a24;
+  --barn:     #992b20;
+  --mustard:  #c08722;
+  --cream:    #faf1d9;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "EB Garamond", serif;
+  padding: 92px clamp(28px, 4vw, 76px) 56px;
+}
+
+/* linen + grain */
+.panel-workshop::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg,   rgba(26,18,10,0.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg,  rgba(26,18,10,0.035) 0 1px, transparent 1px 3px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.06  0 0 0 0 0.02  0 0 0 0.08 0'/></filter><rect width='260' height='260' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.88;
+  z-index: 1;
+}
+.panel-workshop > * { position: relative; z-index: 2; }
+
+/* Nav */
+.ws-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding-bottom: 18px;
+  border-bottom: 4px double var(--ink);
+}
+.ws-wordmark {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 0.88;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+.ws-wordmark em {
+  display: block;
+  margin-top: 6px;
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--ink-soft);
+}
+.ws-nav-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex;
+  gap: 26px;
+  justify-self: center;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.ws-nav-list a { text-decoration: none; }
+.ws-nav-list a:hover { color: var(--barn); }
+.ws-phone {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  color: var(--barn);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Hero */
+.ws-hero {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 44px;
+  margin-top: 44px;
+  align-items: end;
+}
+.ws-headline {
+  margin: 0;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900;
+  font-size: clamp(68px, 9.2vw, 148px);
+  line-height: 0.82;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.ws-headline .accent {
+  position: relative;
+  display: inline-block;
+  color: var(--barn);
+}
+.ws-headline .accent::after {
+  content: "";
+  position: absolute;
+  left: -4px; right: -4px; bottom: -0.05em;
+  height: 0.18em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 12' preserveAspectRatio='none'><path d='M2 8 Q 24 2 50 7 T 100 7 T 150 7 T 200 7 T 238 7' stroke='%23992b20' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.ws-lede {
+  margin: 24px 0 12px;
+  font-size: 19.5px;
+  line-height: 1.5;
+  max-width: 40ch;
+}
+.ws-lede em { font-style: italic; color: var(--barn); }
+.ws-scribble {
+  display: inline-block;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--barn);
+  transform: rotate(-2.5deg) translateX(-4px);
+  transform-origin: left center;
+}
+
+.ws-photo {
+  aspect-ratio: 3/4;
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  transform: rotate(1.4deg);
+}
+.ws-photo::before {
+  content: "";
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  background: var(--mustard);
+  z-index: -1;
+}
+.ws-photo .frame {
+  width: 100%; height: 100%;
+  border: 10px solid var(--ink);
+  overflow: hidden;
+  background: #1a120a;
+}
+.ws-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: saturate(1.06) contrast(1.03);
+}
+.ws-photo figcaption {
+  position: absolute;
+  top: -18px; left: 20px;
+  padding: 4px 10px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  transform: rotate(-3deg);
+}
+
+/* Services banner */
+.ws-services {
+  margin-top: 84px;
+  padding: 22px 0 20px;
+  border-top: 4px double var(--ink);
+  border-bottom: 4px double var(--ink);
+  text-align: center;
+}
+.ws-services-title {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+.ws-services-title::before,
+.ws-services-title::after {
+  content: "✦";
+  color: var(--barn);
+  margin: 0 14px;
+  font-size: 0.8em;
+}
+.ws-services-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 2px 18px;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 3.1vw, 44px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.ws-services-list li + li::before {
+  content: "✦";
+  color: var(--barn);
+  margin-right: 18px;
+  font-size: 0.45em;
+  vertical-align: 0.45em;
+}
+
+/* Contact */
+.ws-contact {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.ws-contact h3 {
+  margin: 0 0 18px;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 0.9;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+.ws-contact h3 .amp {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--barn);
+  text-transform: none;
+}
+.ws-contact dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 14px 18px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.ws-contact dt {
+  align-self: baseline;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--barn);
+  padding-top: 4px;
+}
+.ws-contact dd { margin: 0; }
+.ws-contact a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--mustard);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+.ws-areas {
+  margin: 6px 0 0;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.ws-areas strong {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* =========================================================
+   PAGE-LOAD REVEAL
+   ========================================================= */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.panel > *:not(style) {
+  animation: rise 0.7s cubic-bezier(.2,.65,.2,1) both;
+}
+.panel > *:nth-child(2) { animation-delay: 0.08s; }
+.panel > *:nth-child(3) { animation-delay: 0.18s; }
+.panel > *:nth-child(4) { animation-delay: 0.28s; }
+.panel > *:nth-child(5) { animation-delay: 0.38s; }
+.panel > *:nth-child(6) { animation-delay: 0.48s; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 960px) {
+  .bp-nav { grid-template-columns: 1fr; }
+  .bp-nav-list { justify-self: start; }
+  .bp-hero, .ws-hero { grid-template-columns: 1fr; }
+  .bp-schedule ol { columns: 1; }
+  .bp-contact { grid-template-columns: 1fr 1fr; }
+  .ws-nav { grid-template-columns: 1fr; gap: 14px; }
+  .ws-nav-list { justify-self: start; flex-wrap: wrap; }
+  .ws-contact { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .bp-contact { grid-template-columns: 1fr; }
+  .ws-contact dl { grid-template-columns: 1fr; }
+  .ws-contact dt { padding-top: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="compare">
+
+  <!-- =========================================================
+       OPTION A — BLUEPRINT & CRAFT
+       ========================================================= -->
+  <section class="panel panel-blueprint" data-label="Option A · Blueprint & Craft">
+
+    <header class="bp-nav">
+      <div class="bp-wordmark">
+        DeAngelo<br>Construction <em>&amp;</em> Remodeling
+        <small>Practice est. Barrington, IL</small>
+      </div>
+      <ul class="bp-nav-list">
+        <li><span class="num">01</span><a href="#">Home</a></li>
+        <li><span class="num">02</span><a href="#">About</a></li>
+        <li><span class="num">03</span><a href="#">Services</a></li>
+        <li><span class="num">04</span><a href="#">Projects</a></li>
+        <li><span class="num">05</span><a href="#">FAQ</a></li>
+        <li><span class="num">06</span><a href="#">Contact</a></li>
+      </ul>
+    </header>
+
+    <div class="bp-meta">
+      <span>Figure 01</span>
+      <span>Plate A — Hero</span>
+      <span>Family practice</span>
+      <span>Chicagoland, IL</span>
+      <span>Licensed &amp; insured</span>
+    </div>
+
+    <div class="bp-hero">
+      <div>
+        <h1 class="bp-headline">Quality home <em>construction</em> services.</h1>
+        <p class="bp-lede">A family-owned practice for home repair, remodeling, and painting — drawn with care, built to last, and priced to be possible. Serving Barrington, Illinois and the surrounding Chicagoland area.</p>
+      </div>
+      <figure class="bp-photo">
+        <img src="wordpress_backup/uploads/2024/10/1000006502.jpg" alt="Recent DeAngelo Construction project">
+        <figcaption>Plate I — Recent Work</figcaption>
+      </figure>
+    </div>
+
+    <section class="bp-schedule">
+      <div class="bp-schedule-head">
+        <span>§ Drawing schedule — Services rendered</span>
+        <span>Ten trades, one crew</span>
+      </div>
+      <ol>
+        <li><span class="num">01/10</span><span class="service">Painting — interior &amp; exterior</span><span class="tag">Finishes</span></li>
+        <li><span class="num">02/10</span><span class="service">Remodeling — bath, basement, kitchen</span><span class="tag">Build-out</span></li>
+        <li><span class="num">03/10</span><span class="service">Framing</span><span class="tag">Structure</span></li>
+        <li><span class="num">04/10</span><span class="service">Flooring</span><span class="tag">Finishes</span></li>
+        <li><span class="num">05/10</span><span class="service">Drywall &amp; taping</span><span class="tag">Finishes</span></li>
+        <li><span class="num">06/10</span><span class="service">Electrical</span><span class="tag">Systems</span></li>
+        <li><span class="num">07/10</span><span class="service">Waterproofing</span><span class="tag">Envelope</span></li>
+        <li><span class="num">08/10</span><span class="service">Fencing</span><span class="tag">Exterior</span></li>
+        <li><span class="num">09/10</span><span class="service">Demolition</span><span class="tag">Site prep</span></li>
+        <li><span class="num">10/10</span><span class="service">Gutter cleaning</span><span class="tag">Maintenance</span></li>
+      </ol>
+    </section>
+
+    <dl class="bp-contact">
+      <div>
+        <dt>Telephone</dt>
+        <dd><a href="tel:2244779930">(224) 477-9930</a></dd>
+      </div>
+      <div>
+        <dt>Correspondence</dt>
+        <dd><a href="mailto:deangeloconstructionlawncare@gmail.com">deangeloconstruction<br>lawncare@gmail.com</a></dd>
+      </div>
+      <div>
+        <dt>Studio hours</dt>
+        <dd>9:00 — 18:00<br>Daily</dd>
+      </div>
+      <div>
+        <dt>Follow</dt>
+        <dd>IG <a href="#">@dcr.inc</a><br>Facebook</dd>
+      </div>
+      <p class="bp-areas"><strong>Service territory —</strong> Barrington · Crystal Lake · Vernon Hills · Hoffman Estates · Schaumburg · Wheeling · Palatine · Arlington Heights · Des Plaines · Mount Prospect · Rolling Meadows · Libertyville · Carpentersville · Algonquin · Grayslake · Rockford · Naperville · Joliet · Elgin · Bolingbrook · Rosemont · Gurnee · Oak Park · McHenry · Northbrook · Carol Stream.</p>
+    </dl>
+
+  </section>
+
+
+  <!-- =========================================================
+       OPTION B — MIDWEST WORKSHOP
+       ========================================================= -->
+  <section class="panel panel-workshop" data-label="Option B · Midwest Workshop">
+
+    <header class="ws-nav">
+      <div class="ws-wordmark">
+        DeAngelo<br>Construction
+        <em>&amp; Remodeling — Barrington, IL</em>
+      </div>
+      <ul class="ws-nav-list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <a class="ws-phone" href="tel:2244779930">☎ (224) 477-9930</a>
+    </header>
+
+    <div class="ws-hero">
+      <div>
+        <h1 class="ws-headline">Quality home <span class="accent">construction</span> services.</h1>
+        <p class="ws-lede">Affordable home repair and remodeling from a <em>family-owned</em> crew in Barrington, Illinois. Painting, framing, flooring, drywall — whatever your house needs, we show up on time and finish clean.</p>
+        <span class="ws-scribble">— free estimates, always —</span>
+      </div>
+      <figure class="ws-photo">
+        <figcaption>recent work</figcaption>
+        <div class="frame">
+          <img src="wordpress_backup/uploads/2024/10/1000005928.jpg" alt="Recent DeAngelo Construction project">
+        </div>
+      </figure>
+    </div>
+
+    <section class="ws-services">
+      <p class="ws-services-title">What we do</p>
+      <ul class="ws-services-list">
+        <li>Painting</li>
+        <li>Remodeling</li>
+        <li>Framing</li>
+        <li>Flooring</li>
+        <li>Drywall</li>
+        <li>Electrical</li>
+        <li>Waterproofing</li>
+        <li>Fencing</li>
+        <li>Demos</li>
+        <li>Gutters</li>
+      </ul>
+    </section>
+
+    <section class="ws-contact">
+      <div>
+        <h3>Call, write, <span class="amp">or</span> stop by.</h3>
+        <p class="ws-areas"><strong>Territory — Chicagoland</strong>Barrington, Crystal Lake, Vernon Hills, Hoffman Estates, Schaumburg, Wheeling, Palatine, Arlington Heights, Des Plaines, Mount Prospect, Rolling Meadows, Libertyville, Carpentersville, Algonquin, Grayslake, Rockford, Naperville, Joliet, Elgin, Bolingbrook, Rosemont, Gurnee, Oak Park, McHenry, Northbrook, Carol Stream.</p>
+      </div>
+      <dl>
+        <dt>Phone</dt>
+        <dd><a href="tel:2244779930">(224) 477-9930</a></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:deangeloconstructionlawncare@gmail.com">deangeloconstructionlawncare<br>@gmail.com</a></dd>
+        <dt>Hours</dt>
+        <dd>Open 9 am — 6 pm, daily</dd>
+        <dt>Follow</dt>
+        <dd>Instagram <a href="#">@dcr.inc</a> · Facebook</dd>
+      </dl>
+    </section>
+
+  </section>
+
+</div>
+
+</body>
+</html>
