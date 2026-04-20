@@ -986,11 +986,27 @@ main > *:nth-child(5) { animation-delay: 0.45s; }
     letter-spacing: 0.18em;
   }
   .nav-list li {
-    padding: 13px 0;
+    position: relative;
+    padding: 14px 0;
     border-top: 1px dashed var(--rule-soft);
+    transition: background 0.15s;
   }
   .nav-list li:first-child { border-top: 0; }
-  .nav-list a { display: inline-block; padding: 2px 0; }
+  .nav-list li:hover,
+  .nav-list li:focus-within { background: rgba(169,87,45,0.06); }
+  .nav-list li a { display: inline-block; padding: 0; }
+  /* Stretched link — the pseudo fills the entire li so the whole row
+     (edge to edge, including nav padding) is tappable. `<li>` is the
+     positioned ancestor; `<a>` stays static so the pseudo references li. */
+  .nav-list li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1 * var(--pad));
+    right: calc(-1 * var(--pad));
+    z-index: 1;
+  }
   .nav-list a::after { display: none; }
 }
 
